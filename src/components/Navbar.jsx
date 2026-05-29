@@ -5,12 +5,11 @@ export default function Navbar() {
   return (
     <nav>
       <Link to={"/"}>Accueil</Link>
-      <Link to={"/presentation"}></Link>
-      <Link to={"/projectsDone"}></Link>
-      <Link to={"/projectsDoing"}></Link>
-      <Link to={"/projectsPlan"}></Link>
-      <Link to={"/expAndForm"}></Link>
-      <Link to={"/admin"}></Link>
+      <Link to={"/presentation"}>Présentation</Link>
+      <Link to={"/projectsDone"}>Projets réalisés</Link>
+      <Link to={"/projectsDoing"}>Projets en cours</Link>
+      <Link to={"/projectsPlan"}>Projets prévus</Link>
+      <Link to={"/expAndForm"}>Expériences et formations</Link>
     </nav>
   );
 }
