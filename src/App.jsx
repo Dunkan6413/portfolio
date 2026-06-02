@@ -1,11 +1,9 @@
 //#region imports
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import VantaBackground from "./components/VantaBackground";
 import Accueil from './pages/Accueil'
 import Presentation from './pages/Presentation'
 import ProjectsDone from './pages/ProjectsDone'
@@ -18,6 +16,12 @@ import Dashboard from './pages/Dashboard'
 function App() {
 
   return (
+    <div>
+    <VantaBackground>
+      <div style={{ color: "white", padding: "2rem" }}>
+        <h1>Mon site</h1>
+      </div>
+    </VantaBackground>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -30,6 +34,7 @@ function App() {
         <Route path='/admin' element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
+    </div>
   )
 }
 
