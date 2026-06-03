@@ -17,11 +17,7 @@ function App() {
 
   return (
     <div>
-    <VantaBackground>
-      <div style={{ color: "white", padding: "2rem" }}>
-        <h1>Mon site</h1>
-      </div>
-    </VantaBackground>
+    <VantaBackground />
     <BrowserRouter>
       <Navbar />
       <Routes>
