@@ -1,0 +1,90 @@
+/* Reset & base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Layout racine */
+.layout {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Fond de base : gris foncé */
+.bg-base {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 90%, #7a2e0055 0%, transparent 70%),
+    #292929;
+  z-index: 0;
+  transition: background 0.6s ease;
+}
+
+.layout.menu-open .bg-base {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 90%, #c45a0099 0%, transparent 70%),
+    #141414;
+}
+
+/* Navbar à droite */
+.navbar {
+  position: fixed;
+  top: 50%;
+  right: 2.5rem;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.1rem;
+}
+
+.nav-link {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease, letter-spacing 0.2s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: #e07030;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  letter-spacing: 0.12em;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #e07030;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  background: #e07030;
+}
+
+/* Contenu principal */
+.main-content {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 4rem 10rem 4rem 4rem; /* droite large pour laisser place à la navbar */
+}

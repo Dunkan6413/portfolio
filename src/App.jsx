@@ -4,6 +4,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import VantaBackground from "./components/VantaBackground";
+import Layout from "./assets/Layout";
 import Accueil from './pages/Accueil'
 import Presentation from './pages/Presentation'
 import ProjectsDone from './pages/ProjectsDone'
@@ -17,7 +18,10 @@ function App() {
 
   return (
     <div>
-    <VantaBackground />
+    {/* <VantaBackground /> */}
+    <Layout>
+      <h1>Eliott ZERATH</h1>
+    </Layout>
     <BrowserRouter>
       <Navbar />
       <Routes>
