@@ -19,11 +19,10 @@ function App() {
   return (
     <div>
     {/* <VantaBackground /> */}
+    <BrowserRouter>
     <Layout>
       <h1>Eliott ZERATH</h1>
     </Layout>
-    <BrowserRouter>
-      <Navbar />
       <Routes>
         <Route path='' element={<Accueil/>} />
         <Route path='/presentation' element={<Presentation />} />
