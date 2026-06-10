@@ -21,8 +21,6 @@ function App() {
     {/* <VantaBackground /> */}
     <BrowserRouter>
     <Layout>
-      <h1>Eliott ZERATH</h1>
-    </Layout>
       <Routes>
         <Route path='' element={<Accueil/>} />
         <Route path='/presentation' element={<Presentation />} />
@@ -32,6 +30,7 @@ function App() {
         <Route path='/expAndForm' element={<ExpForm />} />
         <Route path='/admin' element={<Dashboard />} />
       </Routes>
+    </Layout>
     </BrowserRouter>
     </div>
   )

@@ -85,6 +85,7 @@
 .main-content {
   position: relative;
   z-index: 10;
+  padding: 2rem;
   min-height: 100vh;
   padding: 4rem 10rem 4rem 4rem; /* droite large pour laisser place à la navbar */
 }
