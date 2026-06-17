@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+
+.projects {
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* ── Carousel ── */
+.carousel-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.carousel-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e07030;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.2rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+.carousel-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.4);
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ── Carte projet ── */
+.project-card {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.project-card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(224, 112, 48, 0.3);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.card-git {
+  color: rgba(255,255,255,0.4);
+  font-size: 1.2rem;
+  transition: color 0.2s;
+  display: flex;
+}
+
+.card-git:hover {
+  color: #fff;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.card-btn {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid rgba(224, 112, 48, 0.4);
+  color: #e07030;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card-btn:hover {
+  background: #e07030;
+  color: #fff;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 2.5rem;
+  max-width: 640px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.35);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-content {
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.modal-content h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.modal-content h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #e07030;
+  margin: 1.2rem 0 0.5rem;
+}
+
+.modal-content h3 {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  margin: 0.8rem 0 0.3rem;
+}
+
+.modal-content ul {
+  padding-left: 1.2rem;
+  margin: 0.3rem 0;
+}
+
+.modal-content li {
+  margin-bottom: 0.2rem;
+}
+
+.modal-git-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(224,112,48,0.4);
+  color: #e07030;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-git-btn:hover {
+  background: #e07030;
+  color: #fff;
+}

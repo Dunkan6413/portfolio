@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap");
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.home-name {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+
+.home-socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  color: rgb(255, 255, 255);
+  font-size: 5rem;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.social-link:hover {
+  color: #e07030;
+  transform: translateY(-2px);
+}

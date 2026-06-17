@@ -7,9 +7,7 @@ import VantaBackground from "./components/VantaBackground";
 import Layout from "./assets/Layout";
 import Accueil from './pages/Accueil'
 import Presentation from './pages/Presentation'
-import ProjectsDone from './pages/ProjectsDone'
-import ProjectsDoing from './pages/ProjectsDoing'
-import ProjectsPlan from './pages/ProjectsPlan'
+import Projects from './pages/Projects'
 import ExpForm from './pages/ExpForm'
 import Dashboard from './pages/Dashboard'
 //#endregion
@@ -24,9 +22,7 @@ function App() {
       <Routes>
         <Route path='' element={<Accueil/>} />
         <Route path='/presentation' element={<Presentation />} />
-        <Route path='/projectsDone' element={<ProjectsDone />} />
-        <Route path='/projectsDoing' element={<ProjectsDoing />} />
-        <Route path='/projectsPlan' element={<ProjectsPlan />} />
+        <Route path='/projects' element={<Projects />} />
         <Route path='/expAndForm' element={<ExpForm />} />
         <Route path='/admin' element={<Dashboard />} />
       </Routes>
