@@ -21,12 +21,6 @@
   transition: background 0.6s ease;
 }
 
-.layout.menu-open .bg-base {
-  background:
-    radial-gradient(ellipse 80% 60% at 85% 90%, #c45a0099 0%, transparent 70%),
-    #141414;
-}
-
 /* Navbar à droite */
 .navbar {
   position: fixed;
