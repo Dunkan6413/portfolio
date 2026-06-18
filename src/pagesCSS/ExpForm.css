@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+
+.expform {
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 800px;
+}
+
+/* ── Section ── */
+.expform-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e07030;
+  padding-left: 0.75rem;
+  border-left: 2px solid #e07030;
+  border-radius: 0;
+}
+
+/* ── Entries ── */
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.divider {
+  border: none;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.07);
+  margin: 0;
+}
+
+/* ── Entry ── */
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.entry-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+.entry-meta {
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.entry-meta span {
+  margin: 0 0.5rem;
+  color: #e07030;
+}
+
+/* ── Bullets ── */
+.entry-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entry-bullets li {
+  font-size: 1rem;
+  color: #fff;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.entry-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #e07030;
+}

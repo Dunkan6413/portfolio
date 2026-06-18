@@ -2,7 +2,7 @@
 
 .projects {
   min-height: 100vh;
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   font-family: 'Rajdhani', sans-serif;
   color: #fff;
   display: flex;
@@ -10,7 +10,7 @@
   gap: 3.5rem;
 }
 
-/* ── Carousel ── */
+/* Carousel */
 .carousel-section {
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@
   cursor: default;
 }
 
-/* ── Carte projet ── */
+/* Carte projet */
 .project-card {
   flex: 1;
   min-width: 0;
@@ -135,7 +135,7 @@
   color: #fff;
 }
 
-/* ── Modal ── */
+/* Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
