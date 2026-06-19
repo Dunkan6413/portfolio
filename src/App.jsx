@@ -3,7 +3,6 @@ import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import VantaBackground from "./components/VantaBackground";
 import Layout from "./assets/Layout";
 import Accueil from './pages/Accueil'
 import Presentation from './pages/Presentation'
@@ -16,7 +15,6 @@ function App() {
 
   return (
     <div>
-    {/* <VantaBackground /> */}
     <BrowserRouter>
     <Layout>
       <Routes>

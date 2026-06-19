@@ -1,15 +1,13 @@
 /* Reset & base */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 /* Layout racine */
 .layout {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Rajdhani', sans-serif;
 }
-
 /* Fond de base : gris foncé */
 .bg-base {
   position: fixed;
@@ -20,20 +18,20 @@
   z-index: 0;
   transition: background 0.6s ease;
 }
-
-/* Navbar à droite */
+/* Navbar horizontale fixe en haut */
 .navbar {
   position: fixed;
-  top: 50%;
-  right: 2.5rem;
-  transform: translateY(-50%);
-  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1.1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2.8rem;
+  padding: 1.1rem 2rem;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.9), transparent);
 }
-
 .nav-link {
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.95rem;
@@ -44,42 +42,36 @@
   text-decoration: none;
   transition: color 0.2s ease, letter-spacing 0.2s ease;
   position: relative;
+  white-space: nowrap;
 }
-
 .nav-link::after {
   content: '';
   position: absolute;
-  right: 0;
-  bottom: -3px;
+  left: 0;
+  bottom: -4px;
   width: 0;
   height: 1px;
   background: #e07030;
   transition: width 0.25s ease;
 }
-
 .nav-link:hover {
   color: #ffffff;
   letter-spacing: 0.12em;
 }
-
 .nav-link:hover::after {
   width: 100%;
 }
-
 .nav-link.active {
   color: #e07030;
 }
-
 .nav-link.active::after {
   width: 100%;
   background: #e07030;
 }
-
 /* Contenu principal */
 .main-content {
   position: relative;
   z-index: 10;
-  padding: 2rem;
   min-height: 100vh;
-  padding: 4rem 10rem 4rem 4rem; /* droite large pour laisser place à la navbar */
+  padding: 6rem 2rem 4rem; /* padding-top large pour passer sous la navbar fixe */
 }
