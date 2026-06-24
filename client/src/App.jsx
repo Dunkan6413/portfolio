@@ -1,14 +1,15 @@
 //#region imports
-import { useState } from 'react'
-import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import { useState } from 'react';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Layout from "./assets/Layout";
-import Accueil from './pages/Accueil'
-import Presentation from './pages/Presentation'
-import Projects from './pages/Projects'
-import ExpForm from './pages/ExpForm'
-import Dashboard from './pages/Dashboard'
+import Accueil from './pages/Accueil';
+import Presentation from './pages/Presentation';
+import Projects from './pages/Projects';
+import ExpForm from './pages/ExpForm';
+import Dashboard from './pages/Dashboard';
+import Register from './pages/Register';
 //#endregion
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/projects' element={<Projects />} />
         <Route path='/expAndForm' element={<ExpForm />} />
         <Route path='/admin' element={<Dashboard />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
     </Layout>
     </BrowserRouter>

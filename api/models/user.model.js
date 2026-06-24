@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
     },
     profile_picture: { type: String },
     tel: { type: String },
-    birthDate: { type: Date },
+    birthDate: { type: String },
     country: { type: String },
   },
   { timestamps: true },
