@@ -55,7 +55,7 @@ export default function Register() {
                 <input type="text" placeholder="First name" onChange={(e) => setFirst_name(e.target.value)} required />
                 <input type="text" placeholder="Last name" onChange={(e) => setLast_name(e.target.value)} required />
                 <input type="text" placeholder="Phone" onChange={(e) => setTel(e.target.value)} required />
-                <input type="text" placeholder="Birth date" onChange={(e) => setBirthDate(e.target.value)} required />
+                <input type="date" placeholder="Birth date" onChange={(e) => setBirthDate(e.target.value)} required />
                 <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
                 <select name="role" id="role" onChange={(e) => setRole(e.target.value)} required>
                     <option value="">-- Choisir un rôle --</option>
