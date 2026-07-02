@@ -11,7 +11,6 @@ export default function Register() {
 	const [profile_picture, setProfile_picture] = useState('')
 	const [tel, setTel] = useState('')
 	const [birthDate, setBirthDate] = useState('')
-	const [country, setCountry] = useState('')
 
 	async function handleSubmit(e) {
 		e.preventDefault()
@@ -23,12 +22,11 @@ export default function Register() {
 			formData.append('role', role)
             formData.append('first_name', first_name)
             formData.append('last_name', last_name)
-			formData.append('profile_picture', profile_picture)
+			formData.append('image', profile_picture)
 			formData.append('tel', tel)
 			formData.append('birthDate', birthDate)
-			formData.append('country', country)
 			
-			const response = await fetch('http://localhost:3000/register',{
+			const response = await fetch('http://localhost:3000/auth/register',{
 				method: 'POST',
 				body: formData
 			})
@@ -62,7 +60,7 @@ export default function Register() {
                     <option value="user">Utilisateur</option>
                     <option value="admin">Administrateur</option>
                 </select>
-                <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} />
+                <input type="file" accept="image/*" onChange={(e) => setProfile_picture(e.target.files[0])} />
                 <button type="submit">S'inscrire</button>
                 <Link to="/login">Se connecter</Link>
             </form>

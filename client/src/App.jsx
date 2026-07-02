@@ -9,7 +9,7 @@ import Presentation from './pages/Presentation';
 import Projects from './pages/Projects';
 import ExpForm from './pages/ExpForm';
 import Dashboard from './pages/Dashboard';
-import Register from './pages/Register';
+import Login from './pages/Login';
 //#endregion
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Route path='/projects' element={<Projects />} />
         <Route path='/expAndForm' element={<ExpForm />} />
         <Route path='/admin' element={<Dashboard />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </Layout>
     </BrowserRouter>
