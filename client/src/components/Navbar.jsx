@@ -36,9 +36,12 @@ export default function Navbar() {
       <Link to="/projects" className={`nav-link ${location.pathname === "/projects" ? "active" : ""}`}>Projets</Link>
       <Link to="/expAndForm" className={`nav-link ${location.pathname === "/expAndForm" ? "active" : ""}`}>Expériences et formations</Link>
       {isLogged ? (
-        <button className="nav-link" onClick={handleLogout} style={{ background: "none", border: "none", cursor: "pointer" }}>Se déconnecter</button>
+        <div>
+          <button className="nav-link" onClick={handleLogout} style={{ background: "none", border: "none", cursor: "pointer" }}>Se déconnecter</button>
+          <Link to="/dashboard" className={`nav-link ${location.pathname === "/login" ? "active" : ""}`}>Admin</Link>
+        </div>
       ) : (
-        <Link to="/login" className={`nav-link ${location.pathname === "/login" ? "active" : ""}`}>Se connecter</Link>
+        <div></div>
       )}
     </nav>
   );

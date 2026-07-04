@@ -94,6 +94,13 @@ router.post('/logout', (req, res) => {
     return res.status(200).json({message: "Disconnected"})
 })
 
+
+router.get('/admin', verifyToken, async (req, res) => {
+    if (req.user.role !== "admin") {
+        return res.status(403).json({message: "Access forbidden"})
+    }
+})
+
 router.get('/me', verifyToken, (req, res) => {
     return res.status(200).json({ user: req.user });
 })
