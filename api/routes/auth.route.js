@@ -4,6 +4,8 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 
+const verifyToken = require('../middleware/verifyToken');
+
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -80,6 +82,20 @@ router.post('/login-cookie', async (req, res) => {
         console.log(err)
         return res.status(500).json({ message: err.message || err })
     }
+})
+
+router.post('/logout', (req, res) => {
+    res.cookie('token', '', {
+        httpOnly: true,
+        expires: new Date(0),
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax'
+    })
+    return res.status(200).json({message: "Disconnected"})
+})
+
+router.get('/me', verifyToken, (req, res) => {
+    return res.status(200).json({ user: req.user });
 })
 
 module.exports = router;
