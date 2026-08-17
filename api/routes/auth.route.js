@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Project = require("../models/project.model");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const jwt = require("jsonwebtoken");
@@ -104,6 +105,18 @@ router.get('/admin', verifyToken, async (req, res) => {
 
 router.get('/me', verifyToken, (req, res) => {
     return res.status(200).json({ user: req.user });
+})
+
+router.post("/addProject", async (req, res) => {
+    try {
+        const {title, subtitle, repo, readme, type} = req.body
+        console.log(req.body);
+
+        await Project.create({title, subtitle, repo, readme, type})
+        res.status(201).json({message: "Project created"})
+    } catch (err) {
+        res.status(500).json({message:err})
+    }
 })
 
 module.exports = router;

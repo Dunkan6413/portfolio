@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../pagesCSS/Dashboard.css'
 
 export default function Dashboard() {
   const [user, setUser] = useState([])
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   async function getAdmin() {
     try {
@@ -22,7 +23,41 @@ export default function Dashboard() {
       navigate('/login')
     }
   }
+
   return (
-    <div>Dashboard</div>
+    <div className="dashboard">
+      <h1 className="dashboard-title">— Dashboard</h1>
+      <p className="dashboard-subtitle">Ajoute un nouvel élément à ton site</p>
+
+      <div className="dashboard-grid">
+        <button
+          className="dashboard-tile"
+          onClick={() => navigate('/new-project')}
+        >
+          <span className="dashboard-tile-plus">+</span>
+          <span className="dashboard-tile-label">Ajouter un projet</span>
+        </button>
+
+        <button className="dashboard-tile" disabled>
+          <span className="dashboard-tile-plus">+</span>
+          <span className="dashboard-tile-label">À définir</span>
+        </button>
+
+        <button className="dashboard-tile" disabled>
+          <span className="dashboard-tile-plus">+</span>
+          <span className="dashboard-tile-label">À définir</span>
+        </button>
+
+        <button className="dashboard-tile" disabled>
+          <span className="dashboard-tile-plus">+</span>
+          <span className="dashboard-tile-label">À définir</span>
+        </button>
+
+        <button className="dashboard-tile" disabled>
+          <span className="dashboard-tile-plus">+</span>
+          <span className="dashboard-tile-label">À définir</span>
+        </button>
+      </div>
+    </div>
   )
 }

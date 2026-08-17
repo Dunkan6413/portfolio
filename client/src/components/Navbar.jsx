@@ -38,7 +38,7 @@ export default function Navbar() {
       {isLogged ? (
         <div className="nav-admin-group">
           <button className="nav-link" onClick={handleLogout} style={{ background: "none", border: "none", cursor: "pointer" }}>Se déconnecter</button>
-          <Link to="/dashboard" className={`nav-link ${location.pathname === "/login" ? "active" : ""}`}>Admin</Link>
+          <Link to="/admin" className={`nav-link ${location.pathname === "/login" ? "active" : ""}`}>Admin</Link>
         </div>
       ) : (
         <div></div>

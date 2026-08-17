@@ -1,0 +1,71 @@
+.dashboard {
+  position: relative;
+  z-index: 10;
+  padding: 6rem 3rem 4rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: #ffffff;
+}
+
+.dashboard-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e07030;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+}
+
+.dashboard-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 220px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.dashboard-tile:hover:not(:disabled) {
+  border-color: #e07030;
+  background: rgba(224, 112, 48, 0.06);
+  transform: translateY(-2px);
+}
+
+.dashboard-tile:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.dashboard-tile-plus {
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: #e07030;
+  line-height: 1;
+}
+
+.dashboard-tile-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
