@@ -26,6 +26,7 @@ export default function Login() {
             localStorage.setItem('role',data.user.role)
 
             if (data.user.role === 'admin') {
+                console.log(localStorage.getItem('role'))
                 console.log("Vous êtes admin !")
                 // navigate('/admin')
             } else {
