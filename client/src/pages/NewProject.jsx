@@ -10,11 +10,11 @@ export default function NewProject() {
   const [subtitle, setSubtitle] = useState('');
   const [repo, setRepo] = useState('');
   const [readme, setReadme] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState('doing');
 
   async function getAdmin() {
     try {
-      const response = await fetch("http://localhost:3000/admin", {
+      const response = await fetch("http://localhost:3000/auth/admin", {
         method: "GET",
         credentials: "include",
       });
@@ -40,13 +40,11 @@ export default function NewProject() {
     });
 
     console.log('STATUS:', response.status);
-
     if (!response.ok) {
       const errorText = await response.text();
       console.log('ERROR BODY:', errorText);
       throw new Error("Couldn't add project");
     }
-
     const data = await response.json();
     console.log(data);
     navigate('/dashboard');
@@ -63,7 +61,7 @@ export default function NewProject() {
             <input type="text" placeholder="Sous-titre" onChange={(e) => setSubtitle(e.target.value)} required />
             <input type="text" placeholder="Repository" onChange={(e) => setRepo(e.target.value)} required />
             <textarea placeholder="Contenu (readme)" rows={8} onChange={(e) => setReadme(e.target.value)} required />
-            <select name="type" id="type" onChange={(e) => setType(e.target.value)} required>
+            <select name="type" id="type" value={type} onChange={(e) => setType(e.target.value)} required>
                 <option value="doing">En cours</option>
                 <option value="done">Réalisé</option>
                 <option value="planned">Prévu</option>

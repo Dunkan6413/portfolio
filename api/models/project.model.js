@@ -26,11 +26,6 @@ const projectSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true
-    },
-    role: {
-      type: String,
-      required: true,
-      trim: true
     }
   },
   { timestamps: true },
