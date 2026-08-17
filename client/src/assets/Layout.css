@@ -68,6 +68,12 @@
   width: 100%;
   background: #e07030;
 }
+.nav-admin-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 3rem;
+}
 /* Contenu principal */
 .main-content {
   position: relative;
