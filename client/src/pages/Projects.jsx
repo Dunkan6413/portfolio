@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FaGithub,
   FaTimes,
@@ -6,84 +6,6 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import "../pagesCSS/Projects.css";
-
-const projects = {
-  done: [
-    {
-      id: 1,
-      title: "PortfolioV1",
-      subtitle:
-        "Mon premier portfolio, fait en HTML/CSS pur. Oui, c'était courageux.",
-      repo: "https://github.com",
-      readme: `# PortfolioV1\n\nPremier jet de mon portfolio personnel, codé à la main en HTML et CSS sans framework.\n\n## Ce que j'ai appris\n- Les joies du positionnement CSS\n- Pourquoi flexbox existe\n- Que mettre du Comic Sans était une mauvaise idée\n\n## Stack\n- HTML5\n- CSS3\n\n## Lien\nDéployé sur GitHub Pages.`,
-    },
-    {
-      id: 2,
-      title: "TodoApp",
-      subtitle: "Une todo list. Oui encore une. Mais celle-là elle est bien.",
-      repo: "https://github.com",
-      readme: `# TodoApp\n\nUne application de gestion de tâches avec persistence locale.\n\n## Fonctionnalités\n- Ajout / suppression de tâches\n- Marquage comme terminé\n- Sauvegarde en localStorage\n\n## Stack\n- React\n- CSS Modules`,
-    },
-    {
-      id: 3,
-      title: "WeatherBoard",
-      subtitle:
-        "Dashboard météo qui consomme une API publique. Fonctionnel, promis.",
-      repo: "https://github.com",
-      readme: `# WeatherBoard\n\nDashboard météo connecté à l'API OpenWeatherMap.\n\n## Fonctionnalités\n- Recherche par ville\n- Affichage température, humidité, vent\n- Historique des recherches\n\n## Stack\n- React\n- Axios\n- OpenWeatherMap API`,
-    },
-  ],
-  doing: [
-    {
-      id: 4,
-      title: "PortfolioV2",
-      subtitle: "Celui que tu regardes en ce moment. Meta, non ?",
-      repo: "https://github.com",
-      readme: `# PortfolioV2\n\nMon portfolio actuel, en cours de développement.\n\n## Objectifs\n- Design Warframe-inspired\n- React + React Router\n- Back-end à venir pour la gestion des projets\n\n## Stack\n- React\n- CSS custom\n- Node.js (à venir)`,
-    },
-    {
-      id: 5,
-      title: "ChatApp",
-      subtitle:
-        "Application de chat temps réel. Les bugs aussi sont en temps réel.",
-      repo: "https://github.com",
-      readme: `# ChatApp\n\nApplication de messagerie instantanée avec WebSockets.\n\n## Fonctionnalités prévues\n- Rooms de chat\n- Pseudos personnalisés\n- Historique des messages\n\n## Stack\n- React\n- Node.js / Express\n- Socket.io\n- MongoDB`,
-    },
-    {
-      id: 6,
-      title: "GameTracker",
-      subtitle:
-        "Tracker de sessions de jeu. Pour savoir exactement combien d'heures tu perds.",
-      repo: "https://github.com",
-      readme: `# GameTracker\n\nApplication de suivi de temps de jeu vidéo.\n\n## Fonctionnalités prévues\n- Ajout de jeux manuellement\n- Suivi du temps par session\n- Stats et graphiques\n\n## Stack\n- MERN Stack`,
-    },
-  ],
-  planned: [
-    {
-      id: 7,
-      title: "BudgetManager",
-      subtitle: "Parce que savoir où part l'argent, c'est quand même utile.",
-      repo: null,
-      readme: `# BudgetManager\n\nApplication de gestion de budget personnel.\n\n## Idée\n- Suivi des dépenses par catégorie\n- Graphiques mensuels\n- Alertes de dépassement\n\n## Stack envisagée\n- MERN Stack`,
-    },
-    {
-      id: 8,
-      title: "RecipeBox",
-      subtitle:
-        "Stocker ses recettes perso. Parce que les screenshots ça suffit plus.",
-      repo: null,
-      readme: `# RecipeBox\n\nApplication de gestion de recettes personnelles.\n\n## Idée\n- Ajout / édition de recettes\n- Recherche par ingrédient\n- Liste de courses auto-générée\n\n## Stack envisagée\n- React\n- Node.js / Express\n- MongoDB`,
-    },
-    {
-      id: 9,
-      title: "DevDiary",
-      subtitle:
-        "Journal de bord de dev. Pour se souvenir pourquoi on a fait des choix douteux.",
-      repo: null,
-      readme: `# DevDiary\n\nJournal de bord pour développeurs.\n\n## Idée\n- Notes par projet\n- Tags et recherche\n- Export Markdown\n\n## Stack envisagée\n- MERN Stack`,
-    },
-  ],
-};
 
 function parseMarkdown(text) {
   return text
@@ -105,6 +27,8 @@ function Carousel({ title, items, onOpen }) {
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(max, i + 1));
 
+  if (items.length === 0) return null;
+
   return (
     <section className="carousel-section">
       <h2 className="carousel-title">{title}</h2>
@@ -114,7 +38,7 @@ function Carousel({ title, items, onOpen }) {
         </button>
         <div className="carousel-track">
           {items.slice(index, index + visible).map((project) => (
-            <div className="project-card" key={project.id}>
+            <div className="project-card" key={project._id}>
               <div className="card-header">
                 <h3 className="card-title">{project.title}</h3>
                 {project.repo && (
@@ -173,6 +97,41 @@ function Modal({ project, onClose }) {
 
 export default function Projects() {
   const [selected, setSelected] = useState(null);
+  const [projects, setProjects] = useState({ done: [], doing: [], planned: [] });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  async function fetchProjects() {
+      try {
+        const response = await fetch("http://localhost:3000/auth/getProjects", {
+          credentials: "include"
+        });
+        if (!response.ok) {
+          throw new Error("Impossible de charger les projets");
+        }
+
+        const data = await response.json();
+        const sorted = { done: [], doing: [], planned: [] };
+        data.forEach((project) => {
+          if (sorted[project.type]) {
+            sorted[project.type].push(project);
+          }
+        });
+        setProjects(sorted);
+      } catch(err) {
+        console.error(err);
+        setError("Impossible de charger les projets.");
+      } finally {
+        setLoading(false)
+      }
+    }
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  if (loading) return <div className="projects">Chargement...</div>;
+  if (error) return <div className="projects">{error}</div>;
 
   return (
     <div className="projects">

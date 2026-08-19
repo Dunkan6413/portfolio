@@ -47,7 +47,7 @@ export default function NewProject() {
     }
     const data = await response.json();
     console.log(data);
-    navigate('/dashboard');
+    navigate('/admin');
   } catch (err) {
     console.log(err);
   }
