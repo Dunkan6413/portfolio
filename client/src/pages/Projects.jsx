@@ -4,7 +4,10 @@ import {
   FaTimes,
   FaChevronLeft,
   FaChevronRight,
+  FaPen,
+  FaTrash,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "../pagesCSS/Projects.css";
 
 function parseMarkdown(text) {
@@ -19,7 +22,7 @@ function parseMarkdown(text) {
     .replace(/\n/g, " ");
 }
 
-function Carousel({ title, items, onOpen }) {
+function Carousel({ title, items, onOpen, isLogged, onEdit, onDelete }) {
   const [index, setIndex] = useState(0);
   const visible = 3;
   const max = items.length - visible;
@@ -57,6 +60,28 @@ function Carousel({ title, items, onOpen }) {
               <button className="card-btn" onClick={() => onOpen(project)}>
                 Voir le projet
               </button>
+              {isLogged && (
+                <div className="card-admin-group">
+                  <button
+                    className="card-icon-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onEdit(project);
+                    }}
+                  >
+                    <FaPen />
+                  </button>
+                  <button
+                    className="card-icon-btn card-icon-btn--danger"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDelete(project);
+                    }}
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -96,39 +121,83 @@ function Modal({ project, onClose }) {
 }
 
 export default function Projects() {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState(null);
-  const [projects, setProjects] = useState({ done: [], doing: [], planned: [] });
+  const [projects, setProjects] = useState({
+    done: [],
+    doing: [],
+    planned: [],
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isLogged, setIsLogged] = useState(false);
 
   async function fetchProjects() {
-      try {
-        const response = await fetch("http://localhost:3000/auth/getProjects", {
-          credentials: "include"
-        });
-        if (!response.ok) {
-          throw new Error("Impossible de charger les projets");
-        }
-
-        const data = await response.json();
-        const sorted = { done: [], doing: [], planned: [] };
-        data.forEach((project) => {
-          if (sorted[project.type]) {
-            sorted[project.type].push(project);
-          }
-        });
-        setProjects(sorted);
-      } catch(err) {
-        console.error(err);
-        setError("Impossible de charger les projets.");
-      } finally {
-        setLoading(false)
+    try {
+      const response = await fetch("http://localhost:3000/auth/getProjects", {
+        credentials: "include",
+      });
+      if (!response.ok) {
+        throw new Error("Impossible de charger les projets");
       }
+
+      const data = await response.json();
+      const sorted = { done: [], doing: [], planned: [] };
+      data.forEach((project) => {
+        if (sorted[project.type]) {
+          sorted[project.type].push(project);
+        }
+      });
+      setProjects(sorted);
+    } catch (err) {
+      console.error(err);
+      setError("Impossible de charger les projets.");
+    } finally {
+      setLoading(false);
     }
+  }
 
   useEffect(() => {
     fetchProjects();
   }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/auth/me", { credentials: "include" })
+      .then((res) => setIsLogged(res.ok))
+      .catch(() => setIsLogged(false));
+  }, []);
+
+  function handleEdit(project) {
+    navigate(`/admin/edit-project/${project._id}`)
+  }
+
+  async function handleDelete(project) {
+    const confirmDelete = window.confirm(`Supprimer "${project.title}" ?`)
+    if(!confirmDelete){
+      return;
+    }
+
+    try {
+      const response = await fetch (
+        `http://localhost:3000/auth/deleteProject/${project._id}`,
+        {
+          method: "DELETE",
+          credentials: "include"
+        }
+      );
+      if(!response.ok) throw new Error("Suppression impossible");
+
+      setProjects((prev) => {
+        const updated = { ...prev};
+        for (const key of Object.keys(updated)) {
+          updated[key] = updated[key].filter((p) => p._id !== project._id);
+        }
+        return updated;
+      });
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   if (loading) return <div className="projects">Chargement...</div>;
   if (error) return <div className="projects">{error}</div>;
@@ -139,16 +208,25 @@ export default function Projects() {
         title="— Projets réalisés"
         items={projects.done}
         onOpen={setSelected}
+        isLogged={isLogged}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
       />
       <Carousel
         title="— Projets en cours"
         items={projects.doing}
         onOpen={setSelected}
+        isLogged={isLogged}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
       />
       <Carousel
         title="— Projets prévus"
         items={projects.planned}
         onOpen={setSelected}
+        isLogged={isLogged}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
       />
       <Modal project={selected} onClose={() => setSelected(null)} />
     </div>

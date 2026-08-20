@@ -283,3 +283,33 @@
   z-index: 150;
   background: linear-gradient(to left, rgba(0,0,0,0.1) 15%, transparent 20%);
 }
+
+.card-admin-group {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: -0.2rem;
+}
+
+.card-icon-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.card-icon-btn:hover {
+  color: #10c400;
+  border-color: #10c400;
+}
+
+.card-icon-btn--danger:hover {
+  color: #e03630;
+  border-color: #e03630;
+}
