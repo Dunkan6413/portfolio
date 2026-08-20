@@ -65,7 +65,7 @@
 
 /* Carte projet */
 .project-card {
-  flex: 1;
+  flex: 0 0 calc((100% - 2 * 1.2rem) / 3);
   min-width: 0;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
