@@ -23,6 +23,10 @@ export default function Login() {
             }
             
             const data = await response.json()
+            if (response.ok) {
+                window.location.href = '/'
+            }
+            
             localStorage.setItem('role',data.user.role)
 
             if (data.user.role === 'admin') {
