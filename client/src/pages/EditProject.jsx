@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../pagesCSS/NewProject.css";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "../pagesCSS/EditProject.css";
 
-export default function NewProject() {
+export default function EditProject() {
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
 

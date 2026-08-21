@@ -6,6 +6,7 @@ import { useEffect } from "react";
 export default function NewProject() {
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
@@ -16,8 +17,8 @@ export default function NewProject() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/auth/addProject", {
-        method: "POST",
+      const response = await fetch(`http://localhost:3000/auth/updateProject/${id}`, {
+        method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, subtitle, repo, readme, type }),
@@ -31,7 +32,7 @@ export default function NewProject() {
       }
       const data = await response.json();
       console.log(data);
-      navigate("/admin");
+      navigate("/projects");
     } catch (err) {
       console.log(err);
     }
@@ -54,35 +55,65 @@ export default function NewProject() {
     }
   }
 
+  async function getProject() {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/auth/getProject/${id}`,
+        {
+          credentials: "include",
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Projet introuvable");
+      }
+
+      const data = await response.json();
+
+      setTitle(data.title);
+      setSubtitle(data.subtitle);
+      setRepo(data.repo);
+      setReadme(data.readme);
+      setType(data.type);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     getAdmin();
+    getProject();
   }, []);
 
   return (
     <main className="new-project">
       <form onSubmit={handleSubmit} className="new-project-form">
-        <h1 className="new-project-title">Nouveau projet</h1>
+        <h1 className="new-project-title">Modifier le projet</h1>
         <input
           type="text"
           placeholder="Titre"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Sous-titre"
+          value={subtitle}
           onChange={(e) => setSubtitle(e.target.value)}
           required
         />
         <input
           type="text"
           placeholder="Repository"
+          value={repo}
           onChange={(e) => setRepo(e.target.value)}
           required
         />
         <textarea
           placeholder="Contenu (readme)"
           rows={8}
+          value={readme}
           onChange={(e) => setReadme(e.target.value)}
           required
         />
@@ -97,7 +128,7 @@ export default function NewProject() {
           <option value="done">Réalisé</option>
           <option value="planned">Prévu</option>
         </select>
-        <button type="submit">Ajouter</button>
+        <button type="submit">Enregistrer</button>
       </form>
     </main>
   );

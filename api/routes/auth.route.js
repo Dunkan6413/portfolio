@@ -151,4 +151,10 @@ router.get("/getProjects", async (req, res) => {
   }
 });
 
+router.get("/getProject/:id", async (req, res) => {
+    const projectID = req.params.id;
+    const project = await Projects.findOne({ projectID });
+    console.log(project);
+})
+
 module.exports = router;
