@@ -168,7 +168,7 @@ export default function Projects() {
   }, []);
 
   function handleEdit(project) {
-    navigate(`/admin/edit-project/${project._id}`)
+    navigate(`/edit-project/${project._id}`)
   }
 
   async function handleDelete(project) {

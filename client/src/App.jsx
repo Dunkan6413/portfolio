@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NewProject from "./pages/NewProject";
+import EditProject from "./pages/EditProject";
 //#endregion
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/new-project" element={<NewProject />} />
+            <Route path="/edit-project/:id" element={<EditProject />} />
           </Routes>
         </Layout>
       </BrowserRouter>

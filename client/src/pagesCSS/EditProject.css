@@ -1,0 +1,92 @@
+.new-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.new-project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 800px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.new-project-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e07030;
+  margin-bottom: 0.6rem;
+}
+
+.new-project-form input,
+.new-project-form textarea,
+.new-project-form select {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.65rem 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.new-project-form input::placeholder,
+.new-project-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.new-project-form input:focus,
+.new-project-form textarea:focus,
+.new-project-form select:focus {
+  border-color: #e07030;
+}
+
+.new-project-form textarea {
+  resize: vertical;
+  font-family: 'Courier New', monospace;
+  line-height: 1.5;
+  min-height: 320px;
+}
+
+.new-project-form select {
+  cursor: pointer;
+}
+
+.new-project-form select option {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.new-project-form button {
+  margin-top: 0.4rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e07030;
+  background: transparent;
+  border: 1px solid #e07030;
+  border-radius: 4px;
+  padding: 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.new-project-form button:hover {
+  background: #e07030;
+  color: #0a0a0a;
+}
