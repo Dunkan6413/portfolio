@@ -139,8 +139,57 @@
 
 .tech-bar-fill {
   height: 100%;
-  width: 0%; /* sera animé plus tard */
+  width: 0%;
   background: linear-gradient(90deg, #e07030, #ff9a5c);
   border-radius: 2px;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-bar-fill--complete {
+  background: #4caf6f;
+  box-shadow: 0 0 12px rgba(76, 175, 111, 0.55);
+}
+
+.tech-admin-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.tech-percentage-input {
+  width: 55px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.4rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.tech-percentage-input:focus {
+  border-color: #e07030;
+}
+
+.tech-delete-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tech-delete-btn:hover {
+  color: #e05a30;
+  border-color: rgba(224, 90, 48, 0.4);
 }

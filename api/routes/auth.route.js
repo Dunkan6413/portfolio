@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const Project = require("../models/project.model");
+const Tech = require("../models/tech.model");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const jwt = require("jsonwebtoken");
@@ -130,6 +131,7 @@ router.get("/me", verifyToken, (req, res) => {
   return res.status(200).json({ user: req.user });
 });
 
+// Routes project
 router.post("/addProject", async (req, res) => {
   try {
     const { title, subtitle, repo, readme, type } = req.body;
@@ -198,6 +200,65 @@ router.delete("/deleteProject/:id", async (req, res) => {
         }
 
         res.status(200).json({ message: "Project deleted", project: project });
+    } catch (err) {
+        res.status(500).json({ message: err });
+    }
+});
+
+// Routes technologies
+router.post("/addTech", async (req, res) => {
+  try {
+    const { name, icon, percentage } = req.body;
+    console.log(req.body);
+
+    await Tech.create({ name, icon, percentage });
+    res.status(201).json({ message: "Techno créée" });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+});
+
+router.get("/getTechs", async (req, res) => {
+    try {
+        const techs = await Tech.find();
+        res.status(200).json(techs);
+    } catch (err) {
+        res.status(500).json({ message: err });
+    }
+});
+
+router.put("/updateTech/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, icon, percentage } = req.body;
+
+        const updatedTech = await Tech.findByIdAndUpdate(
+            id,
+            { name, icon, percentage },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedTech) {
+            return res.status(404).json({ message: "Tech not found" });
+        }
+
+        res.status(200).json(updatedTech);
+    } catch (err) {
+        res.status(500).json({ message: err });
+    }
+});
+
+router.delete("/deleteTech/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const deletedTech = await Tech.findByIdAndDelete(id);
+
+        if (!deletedTech) {
+            return res.status(404).json({ message: "Tech not found" });
+        }
+
+        res.status(200).json({ message: "Tech deleted", tech: deletedTech });
     } catch (err) {
         res.status(500).json({ message: err });
     }

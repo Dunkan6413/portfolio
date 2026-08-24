@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NewProject from "./pages/NewProject";
 import EditProject from "./pages/EditProject";
+import NewTech from "./pages/NewTech";
 //#endregion
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/new-project" element={<NewProject />} />
             <Route path="/edit-project/:id" element={<EditProject />} />
+            <Route path="/new-tech" element={<NewTech />} />
           </Routes>
         </Layout>
       </BrowserRouter>

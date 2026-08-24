@@ -38,9 +38,12 @@ export default function Dashboard() {
           <span className="dashboard-tile-label">Ajouter un projet</span>
         </button>
 
-        <button className="dashboard-tile" disabled>
+        <button 
+        className="dashboard-tile" 
+        onClick={() => navigate('/new-tech')}
+        >
           <span className="dashboard-tile-plus">+</span>
-          <span className="dashboard-tile-label">À définir</span>
+          <span className="dashboard-tile-label">Ajouter une technologie</span>
         </button>
 
         <button className="dashboard-tile" disabled>
