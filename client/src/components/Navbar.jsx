@@ -9,14 +9,14 @@ export default function Navbar() {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3000/auth/me', {credentials: 'include'})
+    fetch(`${import.meta.env.VITE_BACK_URL}/auth/me`, {credentials: 'include'})
       .then(res => setIsLogged(res.ok))
       .catch(() => setIsLogged(false));
   }, [location])
 
   async function handleLogout() {
     try {
-      const response = await fetch('http://localhost:3000/auth/logout', {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       });

@@ -9,7 +9,7 @@ export default function Dashboard() {
 
   async function getAdmin() {
     try {
-      const response = await fetch('http://localhost:3000/admin', {
+      const response = await fetch('import.meta.env.VITE_BACK_URL/admin', {
         method: 'GET',
         credentials: 'include'
       })
