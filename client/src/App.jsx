@@ -23,15 +23,15 @@ function App() {
         <Layout>
           <Routes>
             <Route path="" element={<Accueil />} />
-            <Route path="/presentation" element={<Presentation />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/expAndForm" element={<ExpForm />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/admin" element={<Dashboard />} />
-            <Route path="/new-project" element={<NewProject />} />
-            <Route path="/edit-project/:id" element={<EditProject />} />
-            <Route path="/new-tech" element={<NewTech />} />
+            <Route path="presentation" element={<Presentation />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="expAndForm" element={<ExpForm />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="admin" element={<Dashboard />} />
+            <Route path="new-project" element={<NewProject />} />
+            <Route path="edit-project/:id" element={<EditProject />} />
+            <Route path="new-tech" element={<NewTech />} />
           </Routes>
         </Layout>
       </BrowserRouter>
