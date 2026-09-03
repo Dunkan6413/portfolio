@@ -134,7 +134,7 @@ export default function Projects() {
 
   async function fetchProjects() {
     try {
-      const response = await fetch("http://localhost:3000/auth/getProjects", {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/getProjects`, {
         credentials: "include",
       });
       if (!response.ok) {
@@ -162,7 +162,7 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/auth/me", { credentials: "include" })
+    fetch(`${import.meta.env.VITE_BACK_URL}/auth/me`, { credentials: "include" })
       .then((res) => setIsLogged(res.ok))
       .catch(() => setIsLogged(false));
   }, []);
@@ -179,7 +179,7 @@ export default function Projects() {
 
     try {
       const response = await fetch (
-        `http://localhost:3000/auth/deleteProject/${project._id}`,
+        `${import.meta.env.VITE_BACK_URL}/auth/deleteProject/${project._id}`,
         {
           method: "DELETE",
           credentials: "include"

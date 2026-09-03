@@ -121,7 +121,7 @@ export default function NewTech() {
 
     setStatus("sending");
     try {
-      const response = await fetch("http://localhost:3000/auth/addTech", {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/addTech`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

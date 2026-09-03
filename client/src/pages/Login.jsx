@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 
-const BASE_URL = "http://localhost:3000/auth/login-cookie"
+const BASE_URL = `${import.meta.env.VITE_BACK_URL}/auth/login-cookie`
 
 export default function Login() {
     const [username, setUsername] = useState("")

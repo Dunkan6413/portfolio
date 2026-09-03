@@ -10,7 +10,7 @@ export default function Presentation() {
   const [editValue, setEditValue] = useState('');
 
   useEffect(() => {
-    fetch("http://localhost:3000/auth/me", { credentials: "include" })
+    fetch(`${import.meta.env.VITE_BACK_URL}/auth/me`, { credentials: "include" })
       .then((res) => setIsLogged(res.ok))
       .catch(() => setIsLogged(false));
   });
@@ -39,7 +39,7 @@ export default function Presentation() {
 
   async function handlePercentageSave(tech) {
     try {
-      const response = await fetch(`http://localhost:3000/auth/updateTech/${tech._id}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/updateTech/${tech._id}`, {
         method: "PUT",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -70,7 +70,7 @@ export default function Presentation() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/auth/deleteTech/${tech._id}`,
+        `${import.meta.env.VITE_BACK_URL}/auth/deleteTech/${tech._id}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -88,7 +88,7 @@ export default function Presentation() {
 
   async function fetchTechs() {
     try {
-      const response = await fetch("http://localhost:3000/auth/getTechs", {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/getTechs`, {
         credentials: "include",
       });
 

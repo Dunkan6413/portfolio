@@ -26,7 +26,7 @@ export default function Register() {
 			formData.append('tel', tel)
 			formData.append('birthDate', birthDate)
 			
-			const response = await fetch('http://localhost:3000/auth/register',{
+			const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/register`,{
 				method: 'POST',
 				body: formData
 			})

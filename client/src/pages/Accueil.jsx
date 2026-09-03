@@ -9,14 +9,14 @@ export default function Accueil() {
 
       <div className="home-socials">
         <a
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          href="https://github.com/Dunkan6413"
           target="blank"
           className="social-link"
         >
           <FaGithub />
         </a>
         <a
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          href="https://www.linkedin.com/in/eliott-zerath-a06803292/"
           target="blank"
           className="social-link"
         >

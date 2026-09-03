@@ -17,7 +17,7 @@ export default function EditProject() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3000/auth/updateProject/${id}`,
+        `import.meta.env.VITE_BACK_URL/auth/updateProject/${id}`,
         {
           method: "PUT",
           credentials: "include",
@@ -42,7 +42,7 @@ export default function EditProject() {
 
   async function getAdmin() {
     try {
-      const response = await fetch("http://localhost:3000/auth/admin", {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/admin`, {
         method: "GET",
         credentials: "include",
       });
@@ -60,7 +60,7 @@ export default function EditProject() {
   async function getProject() {
     try {
       const response = await fetch(
-        `http://localhost:3000/auth/getProject/${id}`,
+        `${import.meta.env.VITE_BACK_URL}/auth/getProject/${id}`,
         {
           credentials: "include",
         },

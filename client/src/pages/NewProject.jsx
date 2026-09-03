@@ -16,7 +16,7 @@ export default function NewProject() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/auth/addProject", {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/addProject`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -39,7 +39,7 @@ export default function NewProject() {
 
   async function getAdmin() {
     try {
-      const response = await fetch("http://localhost:3000/auth/admin", {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/auth/admin`, {
         method: "GET",
         credentials: "include",
       });
